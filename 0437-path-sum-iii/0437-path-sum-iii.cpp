@@ -12,25 +12,24 @@
 class Solution {
 public:
     int c = 0;
-    void check(TreeNode *root, int k, unordered_map<long long,int> m, long long s)
+    unordered_map<long,int> m;
+    void check(TreeNode *root, int k, long s)
     {
         if(root == NULL) return;
         s += root->val;
         if(m[s-k] > 0)
         {
-            c = (c +  m[s-k])%1000000007;
+            c = (c +  m[s-k]);
         }
         m[s]++;
 
-        check(root->left,k,m,s);
-        check(root->right,k,m,s);
-        s -= root->val;
+        check(root->left,k,s);
+        check(root->right,k,s);
         m[s]--;
     }
     int pathSum(TreeNode* root, int k) {
-        unordered_map<long long,int> m;
         m[0] = 1;
-        check(root,k,m,0);
+        check(root,k,0);
         return c%1000000007;
     }
 };
