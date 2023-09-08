@@ -28,8 +28,11 @@ public:
         m[s]--;
     }
     int pathSum(TreeNode* root, int k) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
         m[0] = 1;
         check(root,k,0);
-        return c%1000000007;
+        return c;
     }
 };
