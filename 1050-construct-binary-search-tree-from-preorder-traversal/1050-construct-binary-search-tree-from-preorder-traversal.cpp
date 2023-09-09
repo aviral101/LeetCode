@@ -11,15 +11,7 @@
  */
 class Solution {
 public:
-    int split(vector<int> preorder,int root,int l, int r)
-    {
-        for(int i = l; i<= r; i++)
-        {
-            if(preorder[i] > root)
-                return i - 1;
-        }
-        return r;
-    }
+
     TreeNode* bst(vector<int> preorder, int l, int r, int n)
     {
         if(l == r)
@@ -31,7 +23,16 @@ public:
             return temp;
         }
         if(l > r) return NULL;
-        int m = split(preorder,preorder[l],l+1,r);
+        int m = -1;
+        for(int i = l+1; i<= r; i++)
+        {
+            if(preorder[i] > preorder[l])
+            {
+                m = i-1;
+                break;
+            }
+        }
+        if(m == -1) m = r;
         TreeNode* temp = new TreeNode;
         temp->val = preorder[l];
         temp->left = bst(preorder,l+1,m,n);
