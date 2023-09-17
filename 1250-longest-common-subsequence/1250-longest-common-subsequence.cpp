@@ -12,14 +12,7 @@ public:
         {
             for(int j = 1; j<=m; j++)
             {
-                if(text1[i-1] == text2[j-1])
-                {
-                    d[i][j] = 1 + d[i-1][j-1];
-                }
-                else
-                {
-                    d[i][j] = max(d[i-1][j],d[i][j-1]);
-                }
+                d[i][j] = (text1[i-1] == text2[j-1])? 1+d[i-1][j-1] : max(d[i-1][j],d[i][j-1]);
             }
         }
         // dp(text1,n-1,text2, m-1);
