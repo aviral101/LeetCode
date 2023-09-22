@@ -22,15 +22,15 @@ public:
                 return d[i][j] = 0;
             }
         }
-        else if(p[j] == '?')
+        if(p[j] == '?' || s[i] == p[j])
         {
             return d[i][j] = (dp(s, i+1, p, j+1));
         }
-        else if(p[j] == '*')
+        if(p[j] == '*')
         {
             return d[i][j] = (dp(s,i,p,j+1) | dp(s,i+1,p,j));
         }
-        return 0;
+        return d[i][j] = 0;
     }
     bool isMatch(string s, string p) {
         memset(d,-1,sizeof(d));
