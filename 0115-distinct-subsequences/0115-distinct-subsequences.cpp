@@ -14,9 +14,9 @@ public:
         else return d[i][j] = dp(s, i+1, t, j);
     }
     int numDistinct(string s, string t) {
-        ios_base::sync_with_stdio(0);
-        cin.tie(nullptr);
-        cout.tie(nullptr);
+        // ios_base::sync_with_stdio(0);
+        // cin.tie(nullptr);
+        // cout.tie(nullptr);
         memset(d,-1,sizeof(d));
         return dp(s,0,t,0);
     }
