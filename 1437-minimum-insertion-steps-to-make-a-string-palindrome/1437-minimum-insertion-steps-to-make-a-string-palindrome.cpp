@@ -16,6 +16,9 @@ int d[1001][1001];
         }
     }
     int minInsertions(string s) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
         int n = s.size();
         memset(d,-1,1001 * 1001 * sizeof(int));
         return n - dp(s,0,n-1);
