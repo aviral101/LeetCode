@@ -5,11 +5,14 @@ public:
     {
         if(i >= n) return 0;
         if(dp[i][p+1] != -1) return dp[i][p+1];
+        int a = -1000000,b = -100000;
         if(p == -1 || nums[i] > nums[p])
         {
-            return dp[i][p+1] = max(1 + rec(nums,i + 1, n, i), rec(nums, i+1, n, p));
+            a = 1 + rec(nums,i + 1, n, i);
         }
-        else return dp[i][p+1] = rec(nums, i+1, n, p);
+        b = rec(nums, i+1, n, p);
+        // cout<<a<<" "<<b<<"\n";
+        return dp[i][p+1] = max(a,b);
     }
     int lengthOfLIS(vector<int>& nums) {
         memset(dp,-1,sizeof(dp));
