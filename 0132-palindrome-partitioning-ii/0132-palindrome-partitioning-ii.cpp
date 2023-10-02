@@ -23,7 +23,7 @@ public:
         for(int i = l; i<=r; i++)
         {
             if(check(s,l,i))
-                d[l][r] = min(d[l][r], dp(s,l,i) + dp(s,i+1,r) + 1);
+                d[l][r] = min(d[l][r], dp(s,i+1,r) + 1);
         }
         return d[l][r];
     }
