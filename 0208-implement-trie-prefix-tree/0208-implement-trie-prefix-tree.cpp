@@ -25,6 +25,9 @@ public:
     }
     
     void insert(string word) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
         Node* temp = root;
         for(int i = 0; i<word.size(); i++)
         {
