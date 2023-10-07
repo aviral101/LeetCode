@@ -19,6 +19,9 @@ public:
         return d[i][k][ma] = x;
     }
     int numOfArrays(int n, int m, int k) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
         memset(d,-1, sizeof(d));
         return dp(0,n,m,k,0);
     }
