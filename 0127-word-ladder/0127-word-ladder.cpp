@@ -1,25 +1,29 @@
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_map<string,int> m;
         int n = wordList.size();
-        ios_base::sync_with_stdio(0);
-        cin.tie(nullptr);
-        cout.tie(nullptr);
         vector<vector<int>> adj(n);
+        m[beginWord] = 0;
         for(int i = 0; i<n; i++)
         {
-            
-            for(int j = i+1; j<n; j++)
+            m[wordList[i]] = i;
+        }
+        for(int k = 0; k<n; k++)
+        {
+            for(int i = 0; i<wordList[k].size(); i++)
             {
-                int c = 0;
-                for(int k = 0; k<wordList[i].size(); k++)
+                string x = wordList[k];
+                for(int j = 'a'; j<= 'z'; j++)
                 {
-                    if(wordList[i][k] != wordList[j][k]) c++;
-                }
-                if(c == 1)
-                {
-                    adj[i].push_back(j);
-                    adj[j].push_back(i);
+                    if(j != wordList[k][i])
+                    {
+                        x[i] = j;
+                        if(m.find(x) != m.end() )
+                        {
+                            adj[k].push_back(m[x]);
+                        }
+                    }
                 }
             }
         }   
